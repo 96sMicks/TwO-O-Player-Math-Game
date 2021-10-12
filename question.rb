@@ -8,7 +8,7 @@ class Question
   end
 
   def print_question
-    puts "What does #{num1} plus #{num2} equal?"
+    "What does #{num1} plus #{num2} equal?"
   end
 
   def correct_answer?

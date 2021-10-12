@@ -6,11 +6,16 @@ class Game
   is_game_over = false
   new_player1 = Player.new("Mic")
   new_player2 = Player.new("Steve")
+
+  current_player = new_player1
+  next_player = new_player2
   
+  players = [new_player1, new_player2]
+
   while(!is_game_over)
     new_question = Question.new
 
-    print "#{new_player1.name}: #{new_question.print_question}"
+    puts "#{current_player.name}: #{new_question.print_question}"
 
     print "> " 
     answer = gets.chomp.to_i
@@ -19,14 +24,24 @@ class Game
      puts "YES! You are correct"
     else 
       puts "Wrong answer"
-      new_player1.lose_life
+      current_player.lose_life
     end
 
-    puts "#{new_player1.name} has #{new_player1.lives}/3 lives vs #{new_player2.name} has #{new_player2.lives}/3 lives"
+    puts "#{current_player.name} has #{current_player.lives}/3 lives vs #{next_player.name} has #{next_player.lives}/3 lives"
 
-    if new_player1.lives > 0 
+    if current_player.lives > 0 
       is_game_over = false
       puts "--- NEW TURN ---"
+      # assigns it to a new variable, NOT a direct mutating of state like react, it just grabs the value
+      temp_player = current_player
+
+      current_player = next_player
+      
+      next_player = temp_player
+    else 
+      is_game_over = true
+      puts "Game Over"
     end
+
   end
 end
