@@ -4,13 +4,11 @@ require './question'
 
 class Game
   is_game_over = false
-  new_player1 = Player.new("Mic")
-  new_player2 = Player.new("Steve")
+  new_player1 = Player.new("Player 1")
+  new_player2 = Player.new("Player 2")
 
   current_player = new_player1
   next_player = new_player2
-  
-  players = [new_player1, new_player2]
 
   while(!is_game_over)
     new_question = Question.new
@@ -40,7 +38,7 @@ class Game
       next_player = temp_player
     else 
       is_game_over = true
-      puts "Game Over"
+      puts "#{next_player.name} wins with a score of #{next_player.lives}/3 \n --- GAME OVER --- \n Good Bye!"
     end
 
   end

@@ -2,6 +2,5 @@ require './player'
 require './question'
 require './game'
 
-# p = Player.new("Mic")
-# puts p.lives
-# puts p.name
+# To run game just run ruby main.rb
+game = Game.new
